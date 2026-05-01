@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: 5 Tuần Master AI Cho Marketing</title>
+    <meta name="description" content="Nắm trọn quy trình xây phòng Marketing tự động hoá bằng AI. 5 tuần học cùng chuyên gia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark-theme">
+    
+    <!-- A/B Test Switcher -->
+    <div id="ab-switcher" class="ab-switcher">
+        <div class="ab-switcher-header">
+            <span>A/B Test View</span>
+            <button id="ab-toggle-btn"><i data-lucide="chevron-down"></i></button>
+        </div>
+        <div class="ab-switcher-body">
+            <button class="ab-btn active" data-variant="A">Variant A (Nỗi đau)</button>
+            <button class="ab-btn" data-variant="B">Variant B (Tò mò)</button>
+            <button class="ab-btn" data-variant="C">Variant C (Mất mát)</button>
+        </div>
+    </div>
+
+    <!-- 🎯 SECTION 1: HERO -->
+    <header class="section-hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="pre-headline">
+                    <span class="badge">Dành cho Chủ Doanh Nghiệp Nhỏ, Solopreneur, Chuyên Gia & Nhà Đào Tạo</span>
+                </div>
+                
+                <!-- Dynamic Headline -->
+                <h1 id="hero-headline" class="headline outfit-font">
+                    <span class="variant-A">Sau 5 Tuần — Anh/Chị Sẽ Nắm Trọn Quy Trình Xây Phòng Marketing Tự Động Hoá Bằng AI<br><span class="highlight">(Trong Khi 90% Doanh Nghiệp Khác Còn Đang "Học ChatGPT")</span></span>
+                    <span class="variant-B hidden">Cái Mà 90% Người Học AI Không Nhận Ra:<br><span class="highlight">"Học Tools" Không Tạo Ra Doanh Thu — "Build Hệ Thống" Mới Tạo Ra</span></span>
+                    <span class="variant-C hidden">Mỗi Tuần Anh/Chị Chưa Có AI Agent —<br><span class="highlight">Đối Thủ Đang Bứt Phá 100 Bài Đăng/Tháng Bằng 1 Người</span></span>
+                </h1>
+
+                <p class="subheadline">
+                    5 buổi học trực tuyến cùng chuyên gia. Nắm trọn quy trình từ xây AI Brain riêng &rarr; Build AI Agent &rarr; Triển khai AI Funnel — chỉ trong 5 tuần. Không cần biết code. Không cần thuê designer. Không học lý thuyết suông.
+                </p>
+
+                <!-- Dynamic CTA -->
+                <div id="hero-cta-container" class="cta-container">
+                    <a href="#pricing" class="btn-primary variant-A">
+                        <span class="btn-title">🔥 GIỮ CHỖ ƯU ĐÃI SỚM — 499.000đ</span>
+                        <span class="btn-subtitle">Còn <span class="spots-left">5</span>/15 suất ở mức này — Suất 16 sẽ là 599.000đ</span>
+                    </a>
+                    <a href="#pricing" class="btn-primary variant-B hidden">
+                        <span class="btn-title">EM MUỐN HỌC AI AGENT TRONG 5 TUẦN &rarr;</span>
+                        <span class="btn-subtitle">499.000đ (Còn 15 suất ưu đãi sớm)</span>
+                    </a>
+                    <a href="#pricing" class="btn-primary variant-C hidden">
+                        <span class="btn-title">THỬ MASTERCLASS — 499.000đ</span>
+                        <span class="btn-subtitle">Bảo hành 100% sau 3 buổi đầu</span>
+                    </a>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-item"><i data-lucide="check-circle-2"></i> Học trực tuyến qua Zoom + Lưu trữ trọn đời</div>
+                    <div class="trust-item"><i data-lucide="check-circle-2"></i> Cam kết hoàn tiền 100% sau 3 buổi đầu</div>
+                    <div class="trust-item"><i data-lucide="check-circle-2"></i> Học Bổng Học Viên Cũ 2 triệu</div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <div class="glow-effect"></div>
+                    <img src="assets/portrait.png" alt="Founder" onerror="this.src='assets/Ảnh Phương Đứng.png'">
+                    <div class="floating-badge badge-1">
+                        <div class="badge-icon">🤖</div>
+                        <div class="badge-text">AI Agent<br>Ready</div>
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-text">Tự động hoá<br>100%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 😰 SECTION 2: NỖI ĐAU & KHUẤY ĐỘNG -->
+    <section class="section-pain dark-bg" id="pain-points">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Anh/chị có ít nhất 1 trong 4 nỗi đau này — và mỗi tuần trôi qua, nó đang tăng theo cấp số nhân.</h2>
+            </div>
+            
+            <div class="grid-2-col pain-cards">
+                <div class="card pain-card">
+                    <div class="card-icon red-icon"><i data-lucide="bot"></i></div>
+                    <h3>Tình huống 1: ChatGPT viết... nhưng "không giống anh/chị"</h3>
+                    <p>Sáng thứ 2, anh/chị mở ChatGPT, dán câu lệnh, sao chép kết quả, đăng lên Facebook. Đăng. Im lặng. 5 like, 0 comment. Mở bài tuần trước cũng vậy. Tháng trước cũng vậy.</p>
+                    <div class="card-highlight">
+                        Bí mật ai cũng biết nhưng ít người nói: AI không có "DNA của anh/chị" — nó viết kiểu "ai đọc cũng được, không ai nhớ". Đăng 30 ngày = 30 bài vô danh.
+                    </div>
+                </div>
+                <div class="card pain-card">
+                    <div class="card-icon red-icon"><i data-lucide="video"></i></div>
+                    <h3>Tình huống 2: Tê liệt vì 100 video AI mỗi ngày</h3>
+                    <p>ChatGPT, Claude, Gemini, Midjourney, n8n, Make.com, AI Agent, Câu lệnh, RAG, MCP... Mỗi tuần xuất hiện 5 thuật ngữ mới. Anh/chị lưu video, đánh dấu bài viết — rồi không bao giờ xem lại.</p>
+                    <div class="card-highlight">
+                        6 tháng trôi qua. Vẫn dùng AI chưa hiệu quả hơn 1% so với hồi tháng đầu. Lý do? Không có ai chỉ "đường đi rõ ràng" — chỉ là 1000 công cụ rời rạc.
+                    </div>
+                </div>
+                <div class="card pain-card">
+                    <div class="card-icon red-icon"><i data-lucide="clock"></i></div>
+                    <h3>Tình huống 3: Test 1 ý tưởng = thuê ngoài 5-10 triệu</h3>
+                    <p>Có ý tưởng mới. Cần 1 trang đích để test. Liên hệ dev &rarr; báo giá 8 triệu, 2 tuần. Liên hệ designer &rarr; 3 triệu, 5 ngày. Trong 5 ngày đó, đối thủ trẻ hơn đã chạy xong chiến dịch, có 50 đơn đầu tiên.</p>
+                    <div class="card-highlight">
+                        Tốc độ ý tưởng &rarr; thị trường = lợi thế cạnh tranh duy nhất còn lại trong 2026. Mất tốc độ = mất tất cả.
+                    </div>
+                </div>
+                <div class="card pain-card">
+                    <div class="card-icon red-icon"><i data-lucide="trending-down"></i></div>
+                    <h3>Tình huống 4: Trả 20 triệu/tháng cho agency</h3>
+                    <p>Báo cáo agency gửi mỗi cuối tháng: 40 trang, đầy biểu đồ. Anh/chị đọc 5 phút, không hiểu hết, gật đầu duyệt thanh toán. Tháng sau lặp lại.</p>
+                    <div class="card-highlight">
+                        Doanh thu không tăng tương xứng. Sợ tự làm thì tệ hơn agency. Bị "khoá chân" trong vòng phụ thuộc.
+                    </div>
+                </div>
+            </div>
+
+            <div class="loss-frame glass-panel mt-16">
+                <div class="loss-icon"><i data-lucide="alert-triangle"></i></div>
+                <div class="loss-content">
+                    <h3 class="outfit-font">Hãy tưởng tượng 6 tháng nữa.</h3>
+                    <p>Đối thủ đang dùng AI Agent từ năm 2024 vừa ra mắt sản phẩm thứ 3 trong tháng. Cùng ngân sách, họ ra 100 bài đăng/tháng. Anh/chị: 10 bài.</p>
+                    <p>Cùng 1 ý tưởng: họ triển khai trong 24 giờ. Anh/chị mất 3 tuần.</p>
+                    <p>Khoảng cách giãn ra mỗi 30 ngày. Đến lúc anh/chị "cảm thấy phải học" — đối thủ đã đi xa 6 tháng ánh sáng.</p>
+                    <div class="highlight-text bold mt-4">Câu hỏi không phải "tôi có nên học AI không?" — mà là "tôi còn bao nhiêu tháng trước khi quá muộn?"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌟 SECTION 3: HỌC VIÊN ĐÃ TIN TƯỞNG (TESTIMONIALS) -->
+    <section class="section-testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Hơn 200 chủ doanh nghiệp đã đi cùng em qua các chương trình trước đây</h2>
+                <p class="subtitle">Họ là chủ doanh nghiệp thật, ngành nghề khác nhau, kết quả thật — không phải diễn viên, không kịch bản.</p>
+            </div>
+
+            <div class="grid-2-col videos-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/nuj8vs2KNgI" title="Học viên K1 - Anh Quân" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>👤 Anh Quân — Chủ chuỗi 2 gara ô tô</h4>
+                        <p>"Từ chủ gara không biết gì về marketing tự động — đến vận hành hệ thống CSKH đa kênh."</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/j65UukbfwwU" title="Cảm nhận về 21 NGÀY AHAFUNNEL - Chị Hạnh" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>👤 Chị Hạnh — Life Coach</h4>
+                        <p>"Giải bài toán xây hệ thống bán khoá học tự động mà không lệ thuộc quảng cáo trả phí."</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/C2n2Ixuy2H8" title="CHIA SẺ HÀNH TRÌNH 21 NGÀY TỰ ĐỘNG HOÁ AHAFUNNEL" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>👤 Anh Trí — Chuyên gia Zalo Marketing</h4>
+                        <p>"Chuyên gia chia sẻ hành trình áp dụng quy trình tự động hoá vào business của mình."</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3ljmLFVjJrQ" title="Phản hồi AhaFunnel K1 - Chị Tuyền" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>👤 Chị Tuyền — Tư Vấn Du Học</h4>
+                        <p>"Từ chủ DN tư vấn du học — đến vận hành hệ thống tư vấn khách hàng tiềm năng tự động."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-quote mt-12 text-center">
+                <i data-lucide="quote" class="quote-icon"></i>
+                <h3 class="outfit-font">"Phương ơi, em không nghĩ trong vòng vài tuần mà mình lại làm được nhiều thứ đến vậy."</h3>
+                <p>— Lời chia sẻ chung của hầu hết học viên sau 21 ngày AhaFunnel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💡 SECTION 4: GIẢI PHÁP & CƠ CHẾ -->
+    <section class="section-solution dark-bg" id="solution">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Hầu hết khoá AI dạy sai cách. Đây là cái em làm khác.</h2>
+                <p class="subtitle">Đừng học rời rạc từng công cụ. Hãy học xây dựng HỆ THỐNG.</p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-side bad-side">
+                    <div class="comp-header">
+                        <div class="comp-icon"><i data-lucide="x-circle"></i></div>
+                        <h3>Khoá AI thông thường</h3>
+                    </div>
+                    <div class="comp-body">
+                        <p><strong>Dạy CÔNG CỤ rời rạc:</strong> "Đây là ChatGPT, đây là Midjourney..."</p>
+                        <p class="text-error mt-2">Vấn đề: Học xong 30 video, vẫn không biết kết nối chúng thành 1 hệ thống chạy được.</p>
+                    </div>
+                </div>
+                
+                <div class="vs-badge">VS</div>
+
+                <div class="comparison-side good-side">
+                    <div class="comp-header">
+                        <div class="comp-icon"><i data-lucide="check-circle-2"></i></div>
+                        <h3>Masterclass này</h3>
+                    </div>
+                    <div class="comp-body">
+                        <p><strong>Bắt đầu từ HỆ THỐNG:</strong> Dạy theo khung "DNA &rarr; AGENT". Nắm trọn quy trình từ A-Z trong 5 tuần.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-table-wrapper mt-12">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Khoá AI Khác</th>
+                            <th class="highlight-col">Masterclass Này</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i data-lucide="x" class="text-error inline-icon"></i> Lý thuyết "AI là gì"</td>
+                            <td class="highlight-col"><i data-lucide="check" class="text-success inline-icon"></i> Học quy trình triển khai sản phẩm thật từ Buổi 1</td>
+                        </tr>
+                        <tr>
+                            <td><i data-lucide="x" class="text-error inline-icon"></i> Học qua video quay sẵn (90% bỏ giữa)</td>
+                            <td class="highlight-col"><i data-lucide="check" class="text-success inline-icon"></i> Học trực tiếp theo lớp — hoàn thành cùng nhau</td>
+                        </tr>
+                        <tr>
+                            <td><i data-lucide="x" class="text-error inline-icon"></i> 30+ video, tự ráp lại</td>
+                            <td class="highlight-col"><i data-lucide="check" class="text-success inline-icon"></i> 5 buổi &rarr; 1 quy trình hoàn chỉnh từ A-Z</td>
+                        </tr>
+                        <tr>
+                            <td><i data-lucide="x" class="text-error inline-icon"></i> Câu lệnh chung chung</td>
+                            <td class="highlight-col"><i data-lucide="check" class="text-success inline-icon"></i> AI DNA riêng — đúng giọng doanh nghiệp</td>
+                        </tr>
+                        <tr>
+                            <td><i data-lucide="x" class="text-error inline-icon"></i> "Tự xem rồi tự hỏi"</td>
+                            <td class="highlight-col"><i data-lucide="check" class="text-success inline-icon"></i> Hỏi đáp trực tiếp + cộng đồng Zalo 5 tuần</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔧 SECTION 5: TẠI SAO 90% THẤT BẠI -->
+    <section class="section-roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Tại Sao 90% Người Học AI Thất Bại?<br><span class="text-primary">Và Hệ Thống "DNA &rarr; AGENT" Đã Giải Quyết Cách Nào</span></h2>
+            </div>
+
+            <div class="two-broken-points mt-8 mb-12">
+                <div class="broken-point card">
+                    <div class="bp-number">1</div>
+                    <h4>Đứt gãy: Học công cụ rời rạc</h4>
+                    <p>Học ChatGPT 1 tuần, Midjourney 1 tuần, n8n 1 tuần. Cộng lại 3 tuần học, 0 hệ thống chạy.</p>
+                </div>
+                <div class="broken-point card">
+                    <div class="bp-number">2</div>
+                    <h4>Đứt gãy: Câu lệnh chung chung</h4>
+                    <p>Sao chép từ TikTok &rarr; AI ra nội dung "ai đọc cũng được". Không giọng riêng = vô danh.</p>
+                </div>
+            </div>
+
+            <h3 class="text-center outfit-font mb-8 mt-12 text-gradient">Hệ thống DNA &rarr; AGENT chữa CHÍNH XÁC 2 đứt gãy này:</h3>
+
+            <div class="roadmap-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon pulse-icon">🧬</div>
+                    <div class="timeline-content">
+                        <h4>BƯỚC 1: AI DNA</h4>
+                        <p>Cài "linh hồn doanh nghiệp" vào AI.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon pulse-icon" style="animation-delay: 0.2s">🎨</div>
+                    <div class="timeline-content">
+                        <h4>BƯỚC 2: NỘI DUNG</h4>
+                        <p>Quy trình sản xuất nội dung mang DNA hàng loạt.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon pulse-icon" style="animation-delay: 0.4s">🤖</div>
+                    <div class="timeline-content">
+                        <h4>BƯỚC 3: AI AGENT</h4>
+                        <p>Quy trình build agent đầu tiên dùng DNA tự động.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon pulse-icon" style="animation-delay: 0.6s">🏗️</div>
+                    <div class="timeline-content">
+                        <h4>BƯỚC 4: AI FUNNEL</h4>
+                        <p>Quy trình triển khai phễu bán hàng tự động.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon pulse-icon" style="animation-delay: 0.8s">🗺️</div>
+                    <div class="timeline-content">
+                        <h4>BƯỚC 5: VẬN HÀNH</h4>
+                        <p>Bản đồ vận hành 90 ngày đầu tiên.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-6 subtitle font-bold">Mỗi bước = 1 tuần. Mỗi bước = 1 quy trình hoàn chỉnh mang về áp dụng.</p>
+        </div>
+    </section>
+
+    <!-- 📚 SECTION 6: NỘI DUNG HỌC TỪNG BUỔI -->
+    <section class="section-curriculum dark-bg" id="curriculum">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Nội Dung Chương Trình 5 Tuần</h2>
+            </div>
+
+            <div class="curriculum-list">
+                <!-- Tuần 1 -->
+                <div class="curriculum-card">
+                    <div class="week-badge">Tuần 1</div>
+                    <div class="curriculum-content">
+                        <div class="curr-header">
+                            <h3>🧬 TẠO "AI DNA" CHO DOANH NGHIỆP</h3>
+                            <span class="curr-time"><i data-lucide="calendar" class="inline-icon"></i> Thứ 7 | 19:30 - 21:00</span>
+                        </div>
+                        <ul class="check-list">
+                            <li><i data-lucide="check"></i> Hiểu trọn quy trình thiết lập AI Brain riêng</li>
+                            <li><i data-lucide="check"></i> Huấn luyện AI viết đúng giọng thương hiệu ngay lần đầu</li>
+                            <li><i data-lucide="check"></i> Tối ưu AI để giảm 80% thời gian sửa kết quả</li>
+                        </ul>
+                        <div class="takeaway-box">
+                            <strong>🎁 Mang về:</strong> Khung AI DNA Canvas + Hướng dẫn thiết lập Brain trên ChatGPT/Claude/Gemini
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuần 2 -->
+                <div class="curriculum-card">
+                    <div class="week-badge">Tuần 2</div>
+                    <div class="curriculum-content">
+                        <div class="curr-header">
+                            <h3>🎨 QUY TRÌNH SẢN XUẤT NỘI DUNG BẰNG AI</h3>
+                            <span class="curr-time"><i data-lucide="calendar" class="inline-icon"></i> Thứ 7 | 19:30 - 21:30</span>
+                        </div>
+                        <ul class="check-list">
+                            <li><i data-lucide="check"></i> Sản xuất 5 visual nhất quán thương hiệu trong 30 phút</li>
+                            <li><i data-lucide="check"></i> Quay video AI hoàn chỉnh không cần lên hình</li>
+                            <li><i data-lucide="check"></i> Tái sử dụng 1 video &rarr; 5 đoạn ngắn TikTok/Reels</li>
+                        </ul>
+                        <div class="takeaway-box">
+                            <strong>🎁 Mang về:</strong> 50 mẫu visual Canva + 10 mẫu video CapCut + Quy trình áp dụng
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuần 3 -->
+                <div class="curriculum-card featured-week">
+                    <div class="week-badge bg-primary">Tuần 3</div>
+                    <div class="curriculum-content">
+                        <div class="curr-header">
+                            <h3 class="text-primary">🤖 QUY TRÌNH BUILD AI AGENT</h3>
+                            <span class="curr-time text-primary"><i data-lucide="calendar" class="inline-icon"></i> Thứ 7 | 19:30 - 21:30</span>
+                        </div>
+                        <ul class="check-list">
+                            <li><i data-lucide="check"></i> Hiểu kiến trúc và cách hoạt động của AI Agent</li>
+                            <li><i data-lucide="check"></i> Quy trình build AI Agent đầu tiên cho marketing</li>
+                            <li><i data-lucide="check"></i> "Công thức" để tự build agent thứ 2, 3, 4 sau khoá học</li>
+                        </ul>
+                        <div class="takeaway-box">
+                            <strong>🎁 Mang về:</strong> Hướng dẫn quy trình build AI Agent + Bộ tài liệu mẫu
+                        </div>
+                        <div class="highlight-note mt-4">
+                            <i data-lucide="zap" class="inline-icon"></i> <strong>Buổi này 95% học viên cũ nói "chỗ chuyển hoá nhất"</strong> — vì lần đầu họ hiểu cách AI làm việc thay mình.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuần 4 -->
+                <div class="curriculum-card">
+                    <div class="week-badge">Tuần 4</div>
+                    <div class="curriculum-content">
+                        <div class="curr-header">
+                            <h3>🏗️ QUY TRÌNH TRIỂN KHAI AI FUNNEL</h3>
+                            <span class="curr-time"><i data-lucide="calendar" class="inline-icon"></i> Thứ 7 | 19:30 - 21:30</span>
+                        </div>
+                        <ul class="check-list">
+                            <li><i data-lucide="check"></i> Viết nội dung Landing/Sales Page & tích hợp thanh toán (SePay)</li>
+                            <li><i data-lucide="check"></i> Thiết lập Email & Messenger chăm sóc tự động</li>
+                            <li><i data-lucide="check"></i> Kết nối các hệ thống thành 1 phễu vận hành liền mạch</li>
+                        </ul>
+                        <div class="takeaway-box">
+                            <strong>🎁 Mang về:</strong> Quy trình AI Funnel + Mẫu Landing Page + Hướng dẫn tích hợp
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tuần 5 -->
+                <div class="curriculum-card">
+                    <div class="week-badge">Tuần 5</div>
+                    <div class="curriculum-content">
+                        <div class="curr-header">
+                            <h3>🗺️ BẢN ĐỒ ƯU TIÊN 90 NGÀY</h3>
+                            <span class="curr-time"><i data-lucide="calendar" class="inline-icon"></i> Thứ 7 | 19:30 - 22:00</span>
+                        </div>
+                        <ul class="check-list">
+                            <li><i data-lucide="check"></i> Lập lộ trình 90 ngày áp dụng AI cho doanh nghiệp</li>
+                            <li><i data-lucide="check"></i> Rà soát trực tiếp lộ trình cho 5-10 học viên đăng ký sớm</li>
+                            <li><i data-lucide="check"></i> Biết chính xác bước tiếp theo cần làm gì</li>
+                        </ul>
+                        <div class="takeaway-box">
+                            <strong>🎁 Mang về:</strong> Lộ trình 90 ngày được rà soát — không còn mơ hồ
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ✨ SECTION 7: KẾT QUẢ TRỌN GÓI -->
+    <section class="section-results" id="results">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Đây Không Phải "Học AI"<br><span class="text-primary">Đây Là 7 Quy Trình Thật Anh/Chị Mang Về Áp Dụng</span></h2>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span>Quy trình <strong>AI Brain</strong> — viết nội dung đúng giọng, giảm 80% giờ sửa.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span>Quy trình <strong>Sản xuất Visual/Video</strong> — 30 visual + 5 video/tuần bằng 1 người + AI.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span>Quy trình <strong>Build AI Agent</strong> — tự động hoá tác vụ marketing, giải phóng 10-20h/tuần.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span>Quy trình <strong>AI Funnel</strong> — rút ngắn test ý tưởng từ 2 tuần xuống vài giờ.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span><strong>Lộ trình 90 ngày</strong> rà soát bởi chuyên gia.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span><strong>Cộng đồng Zalo</strong> hỗ trợ xuyên suốt 5 tuần.</span></div>
+                <div class="result-item"><i data-lucide="check-circle-2" class="text-primary"></i> <span><strong>Lưu trữ trọn đời</strong> + cập nhật khi AI thay đổi.</span></div>
+            </div>
+
+            <div class="future-vision mt-12 glass-panel">
+                <h3 class="outfit-font mb-6 text-center">Hình dung 90 ngày sau khi áp dụng:</h3>
+                <ul class="vision-timeline">
+                    <li>
+                        <div class="time">06:30</div>
+                        <div class="desc">Mở Zalo. Agent viết sẵn 7 caption tuần này &rarr; đọc, sửa 1-2 chỗ, duyệt (15 phút).</div>
+                    </li>
+                    <li>
+                        <div class="time">09:00</div>
+                        <div class="desc">Có ý tưởng mới. Mở quy trình AI Funnel &rarr; chiều có trang đích chạy ads test liền.</div>
+                    </li>
+                    <li>
+                        <div class="time">14:00</div>
+                        <div class="desc">Đối tác hỏi báo cáo. Mở dashboard agent &rarr; gửi báo cáo đã tổng hợp trong 5 phút.</div>
+                    </li>
+                    <li>
+                        <div class="time">18:00</div>
+                        <div class="desc">Đi cafe với gia đình. Hệ thống vẫn tự động tạo nội dung, gửi email 24/7 không nghỉ.</div>
+                    </li>
+                </ul>
+                <p class="mt-8 text-center text-primary font-bold text-lg">Đó không phải tương lai xa. Đó là 90 ngày tới của anh/chị.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎁 SECTION 8 & 9: QUÀ TẶNG KÈM & HỌC PHÍ -->
+    <section class="section-pricing dark-bg" id="pricing">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Đầu Tư Một Lần. Nhận Trọn Bộ.</h2>
+                <p class="subtitle">Giá tăng theo số suất — Đăng ký sớm tiết kiệm đến 500.000đ</p>
+            </div>
+
+            <div class="pricing-container">
+                <!-- Value Stack -->
+                <div class="value-stack">
+                    <h3 class="outfit-font mb-6">Trọn Bộ Giải Pháp Sẽ Nhận (Value Stack)</h3>
+                    <ul class="value-list">
+                        <li>
+                            <div class="value-icon">📦</div>
+                            <div class="value-details">
+                                <div class="value-name">LÕI: 5 Buổi Học Trực Tuyến Master AI Cho Marketing</div>
+                                <div class="value-desc">Lưu trữ trọn đời + Sách bài tập 80 trang + Cộng đồng Zalo 5 tuần</div>
+                            </div>
+                            <div class="value-price">5.000.000đ</div>
+                        </li>
+                        <li>
+                            <div class="value-icon">🎁</div>
+                            <div class="value-details">
+                                <div class="value-name">QUÀ TẶNG #1: 30 Câu Lệnh AI Marketing</div>
+                                <div class="value-desc">Đã test cho thị trường Việt Nam. Sao chép &rarr; dán &rarr; có kết quả.</div>
+                            </div>
+                            <div class="value-price">1.500.000đ</div>
+                        </li>
+                        <li>
+                            <div class="value-icon">🎁</div>
+                            <div class="value-details">
+                                <div class="value-name">QUÀ TẶNG #2: 50 Mẫu Visual Canva + 10 Mẫu Video CapCut</div>
+                                <div class="value-desc">Đã kết nối DNA. Đổi text + ảnh là dùng được ngay.</div>
+                            </div>
+                            <div class="value-price">1.500.000đ</div>
+                        </li>
+                        <li>
+                            <div class="value-icon">⭐</div>
+                            <div class="value-details">
+                                <div class="value-name">QUÀ TẶNG #3: Quy Trình AI Agent Tạo Ảnh Chuyên Gia (ĐỘC QUYỀN)</div>
+                                <div class="value-desc">Quy trình chưa ai dạy: Tạo 30 ảnh đồng bộ, kiểm soát nhân vật trong 1 giờ.</div>
+                            </div>
+                            <div class="value-price">3.000.000đ</div>
+                        </li>
+                        <li>
+                            <div class="value-icon">🎓</div>
+                            <div class="value-details">
+                                <div class="value-name">HỌC BỔNG: Dành cho Học Viên Cũ</div>
+                                <div class="value-desc">Trừ trực tiếp vào khoá Flagship nếu muốn em "làm cùng" trong 30 ngày.</div>
+                            </div>
+                            <div class="value-price">2.000.000đ</div>
+                        </li>
+                    </ul>
+                    <div class="value-total">
+                        <span>TỔNG GIÁ TRỊ:</span>
+                        <span class="total-price line-through">13.000.000đ</span>
+                    </div>
+                </div>
+
+                <!-- Pricing Card -->
+                <div class="pricing-card glow-border">
+                    <div class="pricing-header">
+                        <span class="badge badge-gold">🥇 ƯU ĐÃI SỚM</span>
+                        <div class="price">499.000đ</div>
+                        <div class="save-text">Tiết kiệm: 12.501.000đ (96%)</div>
+                    </div>
+                    
+                    <div class="scarcity-bar-container mt-6">
+                        <div class="scarcity-text">
+                            <span>Đã đăng ký: <strong>5/15</strong></span>
+                            <span>Còn lại: <strong class="text-primary">10 suất</strong> ở mức giá này</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill pulse-bg" style="width: 33%;"></div>
+                        </div>
+                    </div>
+
+                    <ul class="price-tiers mt-6">
+                        <li class="active"><i data-lucide="arrow-right" class="inline-icon text-primary"></i> Hiện tại: <strong>499.000đ</strong> (Còn 10 suất)</li>
+                        <li class="opacity-70">⚠️ Suất 16 &rarr; 599.000đ (+100K)</li>
+                        <li class="opacity-70">⚠️ Suất 31 &rarr; 699.000đ (+200K)</li>
+                        <li class="opacity-70">⚠️ 5 suất CUỐI &rarr; 999.000đ (Gấp đôi)</li>
+                    </ul>
+
+                    <a href="#" class="btn-primary full-width btn-pulse mt-8">
+                        <span class="btn-title">🔥 GIỮ CHỖ NGAY — 499.000đ</span>
+                    </a>
+                    
+                    <div class="safe-checkout mt-4 text-center text-sm opacity-80">
+                        <i data-lucide="shield" class="inline-icon"></i> Thanh toán an toàn SePay VietQR / MoMo
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🛡️ SECTION 10: CAM KẾT BẢO HÀNH -->
+            <div class="guarantee-box mt-16 glass-panel flex-row">
+                <div class="guarantee-icon"><i data-lucide="shield-check" style="width: 64px; height: 64px; color: #00A86B;"></i></div>
+                <div class="guarantee-content">
+                    <h3 class="outfit-font">Bảo Hành 100% Hoàn Tiền — Không Rủi Ro</h3>
+                    <p class="mb-4">Nếu sau Buổi 3, anh/chị thấy Masterclass không xứng đáng 499.000đ — em hoàn 100%, không hỏi lý do.</p>
+                    <div class="guarantee-conditions">
+                        <strong>3 điều kiện minh bạch:</strong>
+                        <ul class="check-list small mt-2">
+                            <li><i data-lucide="check"></i> Tham dự đầy đủ 3 buổi đầu trực tiếp</li>
+                            <li><i data-lucide="check"></i> Bật camera trong cả 3 buổi (không avatar đen)</li>
+                            <li><i data-lucide="check"></i> Hoàn thành bài tập về nhà Buổi 1 + Buổi 2</li>
+                        </ul>
+                    </div>
+                    <p class="mt-4 text-sm opacity-80"><em>Tại sao yêu cầu camera bật? Vì em dạy trực tiếp. Em cần thấy mặt anh/chị để biết chỗ nào hiểu, chỗ nào chưa. Anh/chị tham gia thật &rarr; em cam kết kết quả thật. Đơn giản.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ❓ SECTION 11: CÂU HỎI THƯỜNG GẶP -->
+    <section class="section-faq" id="faq">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="outfit-font">Câu Hỏi Thường Gặp</h2>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Q1: "Em chưa biết gì về AI có học được không?"
+                        <i data-lucide="chevron-down" class="acc-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Được. Nếu anh/chị đã từng gửi 1 câu lệnh vào ChatGPT — anh/chị đủ trình độ học Buổi 1. Em hướng dẫn từ con số 0: cách thiết lập, cài đặt, cách dùng. 80% học viên lớp đầu chưa từng dùng AI Agent trước đó.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Q2: "Em không có thời gian nhiều, học có theo kịp không?"
+                        <i data-lucide="chevron-down" class="acc-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>5 buổi × 2-2.5 giờ = ~12 giờ học chính trong 5 tuần. Bài tập về nhà mỗi tuần ~1-2 giờ. Tổng ~15-20 giờ trong 5 tuần — bằng 3-4 buổi cà phê. Nếu lỡ buổi nào, lưu trữ vẫn xem được trọn đời.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Q3: "Khoá học có hỗ trợ sau khi kết thúc không?"
+                        <i data-lucide="chevron-down" class="acc-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Có. Cộng đồng Zalo mở suốt 5 tuần khoá học. Sau khoá học, anh/chị được trừ 2 triệu vào khoá Flagship nếu muốn em "làm cùng" trong 30 ngày tới.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Q4: "Học xong có triển khai được ngay không?"
+                        <i data-lucide="chevron-down" class="acc-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Em dạy quy trình hoàn chỉnh — anh/chị có đầy đủ kiến thức và bộ công cụ để tự triển khai. Tốc độ triển khai phụ thuộc vào việc anh/chị áp dụng ngay sau buổi học hay để dồn lại.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        Q5: "Em sợ khoá này quá cơ bản / quá nâng cao."
+                        <i data-lucide="chevron-down" class="acc-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Masterclass thiết kế cho chủ doanh nghiệp đã từng dùng AI ở mức cơ bản muốn nâng lên hệ thống. Nếu anh/chị đã dùng AI Agent thành thạo &rarr; Flagship 16 triệu phù hợp hơn. Nếu chưa từng mở ChatGPT &rarr; lớp này vẫn theo được, nhưng cần đầu tư nhiều thời gian luyện hơn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚨 SECTION 12: KÊU GỌI HÀNH ĐỘNG CUỐI -->
+    <section class="section-final-cta dark-bg" id="checkout-final">
+        <div class="container">
+            <div class="section-header text-center mb-12">
+                <h2 class="outfit-font">Anh/Chị Có Đúng 2 Lựa Chọn</h2>
+                <p class="subtitle">Lúc Đóng Trang Này Lại...</p>
+            </div>
+
+            <div class="choices-container">
+                <div class="choice choice-1">
+                    <div class="choice-header red-bg">
+                        <h3>🔴 Lựa Chọn 1: Đóng Tab</h3>
+                    </div>
+                    <div class="choice-body">
+                        <p>Quay lại "tự học AI" trên TikTok. 6 tháng nữa, đối thủ ra mắt sản phẩm thứ 5, còn anh/chị vẫn đang:</p>
+                        <ul class="cross-list mt-4">
+                            <li><i data-lucide="x"></i> Sửa kết quả ChatGPT thủ công 80%</li>
+                            <li><i data-lucide="x"></i> Đợi designer trả file thiết kế dài cổ</li>
+                            <li><i data-lucide="x"></i> Trả agency 20 triệu/tháng cho báo cáo không hiểu hết</li>
+                            <li><i data-lucide="x"></i> Tự hỏi: "Tại sao mình không học AI từ năm 2025?"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="choice choice-2 glow-border">
+                    <div class="choice-header green-bg">
+                        <h3>🟢 Lựa Chọn 2: Giữ Chỗ Ngay</h3>
+                    </div>
+                    <div class="choice-body">
+                        <p>Bắt đầu Masterclass thứ 7 tới. 5 tuần sau, anh/chị có:</p>
+                        <ul class="check-list mt-4">
+                            <li><i data-lucide="check"></i> Quy trình build AI Agent tự viết nội dung</li>
+                            <li><i data-lucide="check"></i> Quy trình triển khai AI Funnel hoàn chỉnh</li>
+                            <li><i data-lucide="check"></i> Lộ trình 90 ngày được chuyên gia rà soát</li>
+                            <li><i data-lucide="check"></i> Tham gia cộng đồng 50 chủ doanh nghiệp đi cùng</li>
+                        </ul>
+                        <div class="price-highlight mt-6 text-center pt-4 border-t border-gray-700">
+                            Đầu tư: <strong class="text-primary text-xl">499.000đ</strong><br>
+                            <span class="text-sm opacity-80">(Chỉ 1 lần — Bằng 5 cốc cà phê Highlands)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-cta-wrapper text-center mt-12">
+                <a href="#" class="btn-primary btn-large btn-pulse">
+                    <span class="btn-title">🔥 EM ĐÃ SẴN SÀNG — GIỮ CHỖ 499.000đ</span>
+                    <span class="btn-subtitle">&rarr; Bắt đầu hành trình master AI ngay hôm nay</span>
+                </a>
+                <p class="mt-6 font-medium"><i data-lucide="shield-check" class="inline-icon text-primary"></i> Bảo hành 100% sau 3 buổi | Lưu trữ trọn đời</p>
+            </div>
+
+            <!-- Postscripts -->
+            <div class="ps-section mt-16 glass-panel text-left">
+                <p><strong>P.S.</strong> Trang đích này được viết theo đúng quy trình em dạy ở Buổi 4. Anh/chị đang đọc đến đây = quy trình hoạt động. Trong Masterclass, em chỉ cách viết trang đích tương tự cho doanh nghiệp anh/chị — bằng AI, theo quy trình rút ngắn từ 2 tuần xuống vài giờ.</p>
+                
+                <p class="mt-4"><strong>P.P.S.</strong> 499.000đ = 5-6 cốc cà phê Highlands. Đổi lại: 5 tuần học cùng chuyên gia + 13 triệu giá trị + Học Bổng 2 triệu Flagship. Sau Buổi 3 không hài lòng &rarr; hoàn 100%. Anh/chị thực sự có gì để mất?</p>
+                
+                <p class="mt-4"><strong>P.P.P.S.</strong> Đối thủ trẻ hơn anh/chị 5 tuổi — biết AI từ 2024 — đang đăng ký các khoá tương tự ở Mỹ với giá 500-1000 USD. Em mở phiên bản tiếng Việt với giá 499.000đ. Cơ hội này không kéo dài. <strong>Suất 16 sẽ là 599.000đ — quyết định ngay nếu thấy đúng.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center dark-bg py-8 border-t border-gray-800 mt-12">
+        <div class="container">
+            <p class="text-sm opacity-60">© 2026 AI Marketing Masterclass. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+
+    <!-- CHATBOT WIDGET -->
+    <div id="chatbot-toggle" class="chatbot-toggle" onclick="toggleChatbot()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span class="chatbot-badge">1</span>
+    </div>
+
+    <div id="chatbot-window" class="chatbot-window chatbot-hidden">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">🤖</div>
+                <div>
+                    <div class="chatbot-name">Trợ lý AI của Phương</div>
+                    <div class="chatbot-status">● Online 24/7</div>
+                </div>
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">✕</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Messages will be injected here -->
+        </div>
+        <div class="chatbot-quick-buttons" id="chatbot-quick-buttons">
+            <button onclick="sendQuickQuestion('Khóa học dạy gì?')">📚 Học gì?</button>
+            <button onclick="sendQuickQuestion('Giá bao nhiêu?')">💰 Giá?</button>
+            <button onclick="sendQuickQuestion('Không biết AI có học được không?')">🤔 Newbie?</button>
+            <button onclick="sendQuickQuestion('Có hoàn tiền không?')">🛡️ Hoàn tiền?</button>
+            <button onclick="sendQuickQuestion('Khác gì khóa AI khác?')">⚡ Khác biệt?</button>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Nhập câu hỏi của bạn..." onkeypress="if(event.key==='Enter')sendMessage()">
+            <button class="chatbot-send" onclick="sendMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
+    <style>
+        /* ===== CHATBOT STYLES ===== */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00A86B, #00D084);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(0, 168, 107, 0.4);
+            z-index: 9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: chatbot-pulse 2s infinite;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 32px rgba(0, 168, 107, 0.6);
+        }
+        @keyframes chatbot-pulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(0, 168, 107, 0.4); }
+            50% { box-shadow: 0 4px 32px rgba(0, 168, 107, 0.7); }
+        }
+        .chatbot-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ff4444;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0d1117;
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 96px;
+            right: 24px;
+            width: 380px;
+            max-width: calc(100vw - 32px);
+            height: 540px;
+            max-height: calc(100vh - 140px);
+            background: #161b22;
+            border: 1px solid rgba(0, 168, 107, 0.3);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            z-index: 9998;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 168, 107, 0.15);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .chatbot-hidden {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #00A86B, #008f5b);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chatbot-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chatbot-avatar {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .chatbot-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 14px;
+        }
+        .chatbot-status {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        .chatbot-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .chatbot-close:hover { background: rgba(255,255,255,0.3); }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            scroll-behavior: smooth;
+        }
+        .chatbot-messages::-webkit-scrollbar { width: 4px; }
+        .chatbot-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+        .chatbot-msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13.5px;
+            line-height: 1.5;
+            animation: msg-in 0.3s ease;
+        }
+        @keyframes msg-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chatbot-msg.bot {
+            background: #21262d;
+            color: #e6edf3;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chatbot-msg.user {
+            background: linear-gradient(135deg, #00A86B, #008f5b);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chatbot-msg .cta-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #00A86B, #00D084);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .chatbot-msg .cta-btn:hover { transform: scale(1.03); }
+        .chatbot-msg .cta-btn.secondary {
+            background: rgba(0, 168, 107, 0.15);
+            border: 1px solid rgba(0, 168, 107, 0.4);
+        }
+
+        .chatbot-typing {
+            display: flex;
+            gap: 4px;
+            padding: 10px 14px;
+            align-self: flex-start;
+        }
+        .chatbot-typing span {
+            width: 8px;
+            height: 8px;
+            background: #484f58;
+            border-radius: 50%;
+            animation: typing-bounce 1.4s infinite;
+        }
+        .chatbot-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .chatbot-typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing-bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+
+        .chatbot-quick-buttons {
+            padding: 8px 12px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .chatbot-quick-buttons::-webkit-scrollbar { display: none; }
+        .chatbot-quick-buttons button {
+            white-space: nowrap;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 168, 107, 0.3);
+            background: rgba(0, 168, 107, 0.08);
+            color: #7ee8b0;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .chatbot-quick-buttons button:hover {
+            background: rgba(0, 168, 107, 0.2);
+            border-color: rgba(0, 168, 107, 0.5);
+        }
+
+        .chatbot-input-area {
+            padding: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            gap: 8px;
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #e6edf3;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .chatbot-input-area input:focus {
+            border-color: rgba(0, 168, 107, 0.5);
+        }
+        .chatbot-input-area input::placeholder { color: #484f58; }
+        .chatbot-send {
+            background: linear-gradient(135deg, #00A86B, #00D084);
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .chatbot-send:hover { transform: scale(1.05); }
+
+        @media (max-width: 480px) {
+            .chatbot-window {
+                bottom: 0;
+                right: 0;
+                width: 100vw;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+            .chatbot-toggle { bottom: 16px; right: 16px; }
+        }
+    </style>
+
+    <script>
+    // ===== CHATBOT ENGINE =====
+    const salesScript = {
+        greeting: 'Chào bạn! 👋 Mình là trợ lý AI của Phương. Bạn đang tìm hiểu về Masterclass "5 Tuần Master AI Cho Marketing" đúng không? Hỏi gì cứ gõ — mình trả lời ngay!',
+        qa: [
+            {
+                keywords: ['dạy gì', 'học gì', 'nội dung', 'chương trình', 'khóa học'],
+                answer: 'Đơn giản thôi — 5 tuần, mỗi tuần 1 buổi trực tuyến qua Zoom. Bạn sẽ học trọn quy trình: từ tạo "AI DNA" cho doanh nghiệp → sản xuất nội dung hàng loạt → build AI Agent tự động → triển khai phễu bán hàng AI Funnel → lộ trình 90 ngày.\n\nKhông phải học công cụ lặt vặt — mà là xây cả hệ thống.'
+            },
+            {
+                keywords: ['giá', 'bao nhiêu', 'chi phí', 'tiền', 'phí'],
+                answer: 'Hiện đang ưu đãi sớm <strong>499.000đ</strong> cho 15 suất đầu. Tổng giá trị bộ tài liệu + quà tặng là 13 triệu.\n\nSuất thứ 16 trở đi sẽ tăng lên 599k, và 5 suất cuối là 999k. Nói thẳng: 499k bằng 5 cốc cà phê — đổi lại 5 tuần học cùng chuyên gia.\n\n<a href="#pricing" class="cta-btn" onclick="toggleChatbot()">🔥 GIỮ CHỖ NGAY — 499.000đ</a>'
+            },
+            {
+                keywords: ['không biết', 'newbie', 'mới', 'không rành', 'dở công nghệ', 'code', 'lập trình', 'khó'],
+                answer: 'Được. 80% học viên lớp trước chưa từng dùng AI Agent. Hướng dẫn từ con số 0 — cài đặt, thiết lập, cách dùng. Có template sẵn, prompt sẵn, chỉ cần copy-paste và điền vào chỗ trống.\n\nKhông cần biết code.'
+            },
+            {
+                keywords: ['bao lâu', 'thời gian', 'mấy tiếng', 'bận', 'theo kịp'],
+                answer: 'Mỗi buổi 2 - 2.5 tiếng, thứ 7 hàng tuần lúc 19:30. Bài tập về nhà mỗi tuần mất khoảng 1-2 giờ.\n\nTổng 15-20 giờ trong 5 tuần — bằng 3-4 buổi đi cà phê. Lỡ buổi nào thì có video lưu trữ xem lại trọn đời.'
+            },
+            {
+                keywords: ['áp dụng', 'triển khai', 'thực tế', 'ra kết quả', 'dùng được'],
+                answer: 'Chắc chắn. Mỗi buổi đều có bài tập thực hành và template mang về áp dụng luôn. Không phải lý thuyết suông — bạn sẽ ra sản phẩm thật (Landing Page, AI Agent, phễu bán hàng) ngay trong khóa.'
+            },
+            {
+                keywords: ['hoàn tiền', 'bảo hành', 'rủi ro', 'không hài lòng', 'cam kết'],
+                answer: 'Cam kết hoàn tiền <strong>100%</strong> sau 3 buổi đầu nếu bạn thấy không xứng đáng — không hỏi lý do.\n\nĐiều kiện: tham dự đủ 3 buổi, bật camera, làm bài tập. Toàn bộ rủi ro nằm ở phía chương trình, không phải ở bạn.'
+            },
+            {
+                keywords: ['khác', 'đặc biệt', 'tại sao', 'so sánh', 'ngoài kia'],
+                answer: 'Bản chất khác ở chỗ: đa số khóa AI ngoài kia dạy công cụ rời rạc — "đây là ChatGPT, đây là Midjourney". Học xong 30 video vẫn không biết nối thành hệ thống.\n\nKhóa này dạy theo khung "DNA → Agent" — 5 buổi ra 1 quy trình hoàn chỉnh chạy được ngay.'
+            },
+            {
+                keywords: ['ngành', 'lĩnh vực', 'đặc thù', 'phù hợp'],
+                answer: 'Phù hợp. Vì Tuần 1 bạn sẽ tạo "AI DNA" riêng cho doanh nghiệp mình — AI sẽ hiểu ngành, giọng, khách hàng của bạn.\n\nHọc viên trước đến từ: gara ô tô, du học, coaching, bán lẻ, dịch vụ... đều áp dụng được.'
+            },
+            {
+                keywords: ['lỡ buổi', 'nghỉ', 'replay', 'xem lại', 'lưu trữ'],
+                answer: 'Tất cả buổi đều được ghi hình và lưu trữ trọn đời. Bạn có thể xem lại bất cứ lúc nào. Ngoài ra còn có cộng đồng Zalo hỗ trợ suốt 5 tuần.'
+            },
+            {
+                keywords: ['thanh toán', 'chuyển khoản', 'momo', 'qr', 'mua', 'đăng ký', 'giữ chỗ'],
+                answer: 'Thanh toán qua SePay VietQR hoặc MoMo — an toàn, nhanh gọn. Sau khi thanh toán bạn sẽ được vào nhóm Zalo ngay.\n\nHiện chỉ còn vài suất ở mức giá 499.000đ — suất sau sẽ tăng giá.\n\n<a href="#pricing" class="cta-btn" onclick="toggleChatbot()">🔥 GIỮ CHỖ NGAY — 499.000đ</a>'
+            },
+            {
+                keywords: ['nghĩ thêm', 'suy nghĩ', 'để xem', 'chưa chắc', 'lúc khác', 'tháng sau'],
+                answer: 'Mình hiểu. Nếu chưa sẵn sàng quyết định ngay, bạn có thể để lại thông tin tại form danh sách chờ. Sẽ gửi thêm thông tin chi tiết để bạn cân nhắc.\n\nNhưng nói thẳng — mỗi tuần do dự, đối thủ trẻ hơn đã dùng AI tạo ra 100 bài đăng/tháng bằng 1 người. Tốc độ là lợi thế duy nhất còn lại.'
+            }
+        ],
+        fallback: 'Câu hỏi hay! Mình chưa có câu trả lời sẵn cho vấn đề này. Để được tư vấn chi tiết hơn, bạn có thể nhắn trực tiếp qua Zalo hoặc điền form danh sách chờ để Phương liên hệ lại nhé!\n\n<a href="#pricing" class="cta-btn secondary" onclick="toggleChatbot()">📝 Xem thêm thông tin</a>',
+        closing: 'Nói thẳng nhé — 499k bằng 5 cốc cà phê, nhưng đổi lại bạn có trọn bộ quy trình đáng giá 13 triệu + bảo hành hoàn tiền 100%. Hiện chỉ còn vài suất ở mức giá này.\n\n<a href="#pricing" class="cta-btn" onclick="toggleChatbot()">🔥 GIỮ CHỖ NGAY — 499.000đ</a>'
+    };
+
+    let chatbotOpen = false;
+    let messageCount = 0;
+
+    function toggleChatbot() {
+        const win = document.getElementById('chatbot-window');
+        const badge = document.querySelector('.chatbot-badge');
+        chatbotOpen = !chatbotOpen;
+        if (chatbotOpen) {
+            win.classList.remove('chatbot-hidden');
+            badge.style.display = 'none';
+            if (messageCount === 0) {
+                setTimeout(() => addBotMessage(salesScript.greeting), 500);
+            }
+        } else {
+            win.classList.add('chatbot-hidden');
+        }
+    }
+
+    function addBotMessage(text) {
+        const container = document.getElementById('chatbot-messages');
+        // Show typing indicator
+        const typing = document.createElement('div');
+        typing.className = 'chatbot-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        container.appendChild(typing);
+        container.scrollTop = container.scrollHeight;
+
+        setTimeout(() => {
+            typing.remove();
+            const msg = document.createElement('div');
+            msg.className = 'chatbot-msg bot';
+            msg.innerHTML = text.replace(/\n/g, '<br>');
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+            messageCount++;
+        }, 800 + Math.random() * 600);
+    }
+
+    function addUserMessage(text) {
+        const container = document.getElementById('chatbot-messages');
+        const msg = document.createElement('div');
+        msg.className = 'chatbot-msg user';
+        msg.textContent = text;
+        container.appendChild(msg);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function findAnswer(question) {
+        const q = question.toLowerCase();
+        for (const item of salesScript.qa) {
+            for (const kw of item.keywords) {
+                if (q.includes(kw)) return item.answer;
+            }
+        }
+        return salesScript.fallback;
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chatbot-input');
+        const text = input.value.trim();
+        if (!text) return;
+        addUserMessage(text);
+        input.value = '';
+        const answer = findAnswer(text);
+        addBotMessage(answer);
+
+        // After 3 questions, suggest closing
+        if (messageCount >= 6 && Math.random() > 0.5) {
+            setTimeout(() => addBotMessage(salesScript.closing), 3000);
+        }
+    }
+
+    function sendQuickQuestion(text) {
+        addUserMessage(text);
+        const answer = findAnswer(text);
+        addBotMessage(answer);
+    }
+    </script>
+</body>
+</html>
