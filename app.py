@@ -16,6 +16,7 @@ import hmac
 import hashlib
 from datetime import datetime
 from flask import Flask, request, jsonify, render_template, send_from_directory, redirect, url_for
+import resend
 
 app = Flask(__name__, template_folder="templates", static_folder=".")
 
@@ -27,6 +28,83 @@ PRODUCT_PRICE = 499000          # VNĐ — giá ưu đãi sớm
 SEPAY_ACCOUNT_NUMBER = "0030100065507004"   # So tai khoan OCB
 SEPAY_BANK_CODE      = "OCB"                 # Ma ngan hang OCB
 SEPAY_WEBHOOK_SECRET = ""                    # API Secret tu trang Sepay (dien sau)
+
+# ── Cau hinh Resend Email ─────────────────────────────────────────
+def _load_resend_config():
+    cfg = {}
+    config_path = os.path.join(os.path.dirname(__file__), "resend_config.txt")
+    if os.path.exists(config_path):
+        for line in open(config_path).readlines():
+            if "=" in line:
+                k, v = line.strip().split("=", 1)
+                cfg[k.strip()] = v.strip()
+    return cfg
+
+_rcfg = _load_resend_config()
+resend.api_key        = _rcfg.get("RESEND_API_KEY", "")
+RESEND_FROM           = _rcfg.get("RESEND_FROM", "onboarding@resend.dev")
+RESEND_TO_TEST        = _rcfg.get("RESEND_TO_TEST", "")
+
+
+def send_email(to_email, subject, html_body):
+    """Gui email qua Resend. Neu chua co domain thi chi gui ve to_email cua chinh minh."""
+    if not resend.api_key:
+        print("[Email] Chua co API Key — bo qua.")
+        return
+    # Resend mien phi chi cho phep gui den email da xac minh (khong co custom domain)
+    # Neu chua verify domain, gui ve email cua chinh minh de test
+    actual_to = RESEND_TO_TEST if RESEND_TO_TEST else to_email
+    try:
+        params = {
+            "from": RESEND_FROM,
+            "to": [actual_to],
+            "subject": subject,
+            "html": html_body,
+        }
+        r = resend.Emails.send(params)
+        print(f"[Email] Gui thanh cong den {actual_to} — ID: {r.get('id','')}")
+    except Exception as e:
+        print(f"[Email] Loi: {e}")
+
+
+def send_welcome_email(name, email, order_code):
+    subject = f"Chao {name} — Toi vua giu cho cho ban"
+    html = f"""
+    <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
+      <h2 style="color:#00A86B">{name} oi,</h2>
+      <p>Cam on ban da dang ky <strong>Masterclass: He Thong AI Marketing Tinh Gon</strong>.</p>
+      <p>Toi da giu cho cho ban roi — ma don: <strong style="color:#00A86B">{order_code}</strong></p>
+      <p>5 tuan, moi tuan ban se co 1 he thong chay that tren may tinh cua ban.<br>
+      Tuan 1 xong la ban co website + chatbot.<br>
+      Tuan 5 xong la co may ban hang tu dong 24/7 — khong can thue nhan su.</p>
+      <p>Neu ban chua chuyen khoan, hay hoan tat thanh toan de chot suat.<br>
+      Neu da chuyen roi — toi se lien he ban qua SDT trong vong 24 gio.</p>
+      <p>Bat ky cau hoi nao cu reply email nay — toi doc het.</p>
+      <p>Phuong</p>
+    </div>
+    """
+    send_email(email, subject, html)
+
+
+def send_confirmation_email(name, email, order_code, amount):
+    subject = f"Da xac nhan — Chao mung ban vao Masterclass!"
+    html = f"""
+    <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
+      <h2 style="color:#00A86B">{name} oi,</h2>
+      <p>Toi da nhan duoc thanh toan cua ban. Cho trong Masterclass da duoc xac nhan.</p>
+      <div style="background:#f5f5f5;padding:16px;border-radius:8px;margin:16px 0">
+        <p style="margin:4px 0"><strong>Khoa hoc:</strong> He Thong AI Marketing Tinh Gon (5 tuan)</p>
+        <p style="margin:4px 0"><strong>So tien:</strong> {amount:,}d</p>
+        <p style="margin:4px 0"><strong>Ma don:</strong> {order_code}</p>
+      </div>
+      <p><strong>Buoc tiep theo:</strong><br>
+      Toi se lien he ban qua SDT da dang ky trong vong 24 gio de them ban vao nhom Zalo cua lop.</p>
+      <p>Hen gap ban trong lop!</p>
+      <p>Phuong</p>
+    </div>
+    """
+    send_email(email, subject, html)
+
 
 # ── Helper DB ─────────────────────────────────────────────────────
 def get_db():
@@ -108,6 +186,9 @@ def checkout():
         f"&accountName=NGUYEN+THI+VIET+PHUONG"
     )
 
+    # Gui email chao mung ngay sau khi tao don
+    send_welcome_email(name, email, order_code)
+
     return jsonify({
         "ok":           True,
         "order_code":   order_code,
@@ -163,6 +244,16 @@ def sepay_webhook():
         )
         db.commit()
         print(f"[Webhook] THANH CONG! Don {matched['order_code']} da duoc thanh toan!")
+
+        # Gui email xac nhan don hang
+        customer = get_db().execute(
+            "SELECT name, email FROM customers WHERE id=?", (matched["customer_id"],)
+        ).fetchone()
+        if customer and customer["email"]:
+            send_confirmation_email(
+                customer["name"], customer["email"],
+                matched["order_code"], matched["amount"]
+            )
 
     finally:
         db.close()

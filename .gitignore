@@ -3,3 +3,4 @@ brain.db
 __pycache__/
 .DS_Store
 Thumbs.db
+resend_config.txt
