@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Masterclass AI Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; }
+
+        /* ── Header ── */
+        .topbar {
+            background: linear-gradient(135deg, #00A86B, #008f5b);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .topbar h1 { font-size: 20px; font-weight: 700; }
+        .topbar span { font-size: 13px; opacity: 0.8; }
+
+        /* ── Stats cards ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            padding: 24px;
+        }
+        .stat-card {
+            background: #161b22;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .stat-label { font-size: 13px; color: #7d8590; margin-bottom: 8px; }
+        .stat-value { font-size: 28px; font-weight: 700; }
+        .stat-value.green { color: #00A86B; }
+        .stat-value.yellow { color: #f0c040; }
+
+        /* ── Table ── */
+        .table-wrapper { padding: 0 24px 40px; }
+        .table-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .table-header h2 { font-size: 16px; font-weight: 600; }
+        .refresh-btn {
+            background: rgba(0,168,107,0.15);
+            border: 1px solid rgba(0,168,107,0.3);
+            color: #00A86B;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .refresh-btn:hover { background: rgba(0,168,107,0.25); }
+
+        table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+        thead th {
+            background: #161b22;
+            color: #7d8590;
+            font-weight: 500;
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        tbody tr {
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.2s;
+        }
+        tbody tr:hover { background: rgba(255,255,255,0.03); }
+        td { padding: 12px 14px; vertical-align: middle; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge.paid    { background: rgba(0,168,107,0.2); color: #00D084; border: 1px solid rgba(0,168,107,0.3); }
+        .badge.pending { background: rgba(240,192,64,0.15); color: #f0c040; border: 1px solid rgba(240,192,64,0.3); }
+
+        .phone-copy { cursor: pointer; color: #58a6ff; text-decoration: none; }
+        .phone-copy:hover { text-decoration: underline; }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px;
+            color: #7d8590;
+        }
+        .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <h1>🔧 Admin Panel — Masterclass AI Marketing</h1>
+    <span>Chỉ dùng nội bộ</span>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-label">Tổng đơn hàng</div>
+        <div class="stat-value">{{ stats.total or 0 }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Đã thanh toán</div>
+        <div class="stat-value green">{{ stats.paid or 0 }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Chờ thanh toán</div>
+        <div class="stat-value yellow">{{ stats.pending or 0 }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Doanh thu thực thu</div>
+        <div class="stat-value green">
+            {% if stats.revenue %}
+                {{ "{:,.0f}".format(stats.revenue) }}đ
+            {% else %}
+                0đ
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Table -->
+<div class="table-wrapper">
+    <div class="table-header">
+        <h2>📋 Danh sách đơn hàng</h2>
+        <a href="/admin" class="refresh-btn">🔄 Làm mới</a>
+    </div>
+
+    {% if orders %}
+    <table>
+        <thead>
+            <tr>
+                <th>Mã đơn</th>
+                <th>Khách hàng</th>
+                <th>SĐT</th>
+                <th>Email</th>
+                <th>Số tiền</th>
+                <th>Trạng thái</th>
+                <th>Đăng ký lúc</th>
+                <th>Thanh toán lúc</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for o in orders %}
+            <tr>
+                <td><code style="color:#58a6ff">{{ o.order_code }}</code></td>
+                <td><strong>{{ o.customer_name }}</strong></td>
+                <td><a class="phone-copy" href="tel:{{ o.customer_phone }}">{{ o.customer_phone }}</a></td>
+                <td style="color:#7d8590">{{ o.customer_email or '—' }}</td>
+                <td><strong>{{ "{:,.0f}".format(o.amount) }}đ</strong></td>
+                <td>
+                    {% if o.status == 'paid' %}
+                        <span class="badge paid">✅ Đã thanh toán</span>
+                    {% else %}
+                        <span class="badge pending">⏳ Chờ thanh toán</span>
+                    {% endif %}
+                </td>
+                <td style="color:#7d8590;font-size:12px">{{ o.created_at[:16].replace('T', ' ') }}</td>
+                <td style="color:#7d8590;font-size:12px">
+                    {{ o.paid_at[:16].replace('T', ' ') if o.paid_at else '—' }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+        <div class="icon">📭</div>
+        <p>Chưa có đơn hàng nào. Đợi khách đặt hàng!</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

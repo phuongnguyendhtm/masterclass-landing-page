@@ -47,18 +47,18 @@
 
                 <!-- Dynamic CTA -->
                 <div id="hero-cta-container" class="cta-container">
-                    <a href="#pricing" class="btn-primary variant-A">
+                    <button onclick="openCheckout()" class="btn-primary variant-A" style="border:none;cursor:pointer;width:100%">
                         <span class="btn-title">🔥 GIỮ CHỖ ƯU ĐÃI SỚM — 499.000đ</span>
                         <span class="btn-subtitle">Còn <span class="spots-left">5</span>/15 suất ở mức này — Suất 16 sẽ là 599.000đ</span>
-                    </a>
-                    <a href="#pricing" class="btn-primary variant-B hidden">
+                    </button>
+                    <button onclick="openCheckout()" class="btn-primary variant-B hidden" style="border:none;cursor:pointer;width:100%">
                         <span class="btn-title">EM MUỐN HỌC AI AGENT TRONG 5 TUẦN &rarr;</span>
                         <span class="btn-subtitle">499.000đ (Còn 15 suất ưu đãi sớm)</span>
-                    </a>
-                    <a href="#pricing" class="btn-primary variant-C hidden">
+                    </button>
+                    <button onclick="openCheckout()" class="btn-primary variant-C hidden" style="border:none;cursor:pointer;width:100%">
                         <span class="btn-title">THỬ MASTERCLASS — 499.000đ</span>
                         <span class="btn-subtitle">Bảo hành 100% sau 3 buổi đầu</span>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="trust-indicators">
@@ -729,7 +729,217 @@
     </script>
     <script src="script.js"></script>
 
+    <!-- ═══════════════════════════════════════════
+         CHECKOUT MODAL — KẾT NỐI SEPAY
+    ════════════════════════════════════════════ -->
+    <div id="checkout-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:10000;align-items:center;justify-content:center;padding:16px">
+      <div id="checkout-box" style="background:#161b22;border:1px solid rgba(0,168,107,0.35);border-radius:20px;width:100%;max-width:460px;overflow:hidden;animation:modal-in 0.3s ease">
+
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,#00A86B,#008f5b);padding:18px 20px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-weight:700;font-size:16px;color:#fff">🔥 Giữ Chỗ Masterclass</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.8);margin-top:2px">499.000đ — Còn 5/15 suất ưu đãi</div>
+          </div>
+          <button onclick="closeCheckout()" style="background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;cursor:pointer">✕</button>
+        </div>
+
+        <!-- STEP 1: Form nhập thông tin -->
+        <div id="step-form" style="padding:24px">
+          <p style="color:#7d8590;font-size:13px;margin-bottom:20px">Điền thông tin để nhận link Zoom và tài liệu ngay khi có chỗ.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <label style="font-size:13px;color:#e6edf3;font-weight:500;display:block;margin-bottom:6px">Họ và tên *</label>
+              <input id="co-name" type="text" placeholder="Nguyễn Thị A"
+                style="width:100%;background:#0d1117;border:1px solid rgba(255,255,255,0.12);color:#e6edf3;padding:11px 14px;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.2s"
+                onfocus="this.style.borderColor='rgba(0,168,107,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <div>
+              <label style="font-size:13px;color:#e6edf3;font-weight:500;display:block;margin-bottom:6px">Số điện thoại *</label>
+              <input id="co-phone" type="tel" placeholder="0912 345 678"
+                style="width:100%;background:#0d1117;border:1px solid rgba(255,255,255,0.12);color:#e6edf3;padding:11px 14px;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.2s"
+                onfocus="this.style.borderColor='rgba(0,168,107,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+            <div>
+              <label style="font-size:13px;color:#e6edf3;font-weight:500;display:block;margin-bottom:6px">Email (để nhận tài liệu)</label>
+              <input id="co-email" type="email" placeholder="email@gmail.com"
+                style="width:100%;background:#0d1117;border:1px solid rgba(255,255,255,0.12);color:#e6edf3;padding:11px 14px;border-radius:10px;font-size:14px;outline:none;transition:border-color 0.2s"
+                onfocus="this.style.borderColor='rgba(0,168,107,0.6)'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'">
+            </div>
+          </div>
+          <div id="co-error" style="color:#f85149;font-size:13px;margin-top:10px;display:none"></div>
+          <button onclick="submitCheckout()" id="co-submit-btn"
+            style="width:100%;margin-top:20px;padding:14px;background:linear-gradient(135deg,#00A86B,#00D084);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:transform 0.2s"
+            onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            Tiếp theo — Thanh toán →
+          </button>
+          <p style="text-align:center;font-size:12px;color:#7d8590;margin-top:12px">🛡️ Bảo hành hoàn tiền 100% sau 3 buổi đầu</p>
+        </div>
+
+        <!-- STEP 2: Hiển thị QR -->
+        <div id="step-qr" style="padding:24px;display:none">
+          <div style="text-align:center;margin-bottom:20px">
+            <div style="font-size:15px;font-weight:700;color:#e6edf3;margin-bottom:4px">Quét mã QR để chuyển khoản</div>
+            <div style="font-size:13px;color:#7d8590">Hệ thống sẽ tự xác nhận ngay khi nhận được tiền</div>
+          </div>
+
+          <div style="background:#fff;border-radius:16px;padding:12px;display:inline-block;margin:0 auto 20px;display:flex;justify-content:center">
+            <img id="qr-image" src="" alt="QR Thanh toán" style="width:220px;height:220px;border-radius:8px">
+          </div>
+
+          <div style="background:#0d1117;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span style="color:#7d8590;font-size:13px">Ngân hàng</span>
+              <span id="qr-bank" style="font-weight:600;font-size:13px;color:#e6edf3"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span style="color:#7d8590;font-size:13px">Số tài khoản</span>
+              <span id="qr-account" style="font-weight:600;font-size:13px;color:#e6edf3;font-family:monospace"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+              <span style="color:#7d8590;font-size:13px">Số tiền</span>
+              <span style="font-weight:700;font-size:14px;color:#00D084">499.000đ</span>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="color:#7d8590;font-size:13px">Nội dung CK</span>
+              <span id="qr-content" style="font-weight:700;font-size:13px;color:#f0c040;font-family:monospace"></span>
+            </div>
+          </div>
+
+          <!-- Trạng thái đang đợi -->
+          <div id="waiting-status" style="text-align:center;padding:12px;background:rgba(240,192,64,0.08);border:1px solid rgba(240,192,64,0.2);border-radius:10px">
+            <div style="font-size:13px;color:#f0c040">
+              <span class="dots-anim">⏳ Đang chờ xác nhận thanh toán</span>
+            </div>
+            <div style="font-size:12px;color:#7d8590;margin-top:4px">Tự động xác nhận sau khi chuyển khoản thành công</div>
+          </div>
+
+          <p style="text-align:center;font-size:12px;color:#7d8590;margin-top:14px">
+            ⚠️ Nhớ ghi đúng nội dung chuyển khoản để hệ thống nhận diện tự động
+          </p>
+        </div>
+
+        <!-- STEP 3: Thành công -->
+        <div id="step-success" style="padding:32px;text-align:center;display:none">
+          <div style="font-size:56px;margin-bottom:16px">🎉</div>
+          <div style="font-size:20px;font-weight:700;color:#00D084;margin-bottom:8px">Thanh toán thành công!</div>
+          <div style="font-size:14px;color:#7d8590;margin-bottom:24px">Phương sẽ liên hệ với bạn qua SĐT đã đăng ký trong vòng 24 giờ để gửi thông tin vào nhóm Zalo khóa học.</div>
+          <button onclick="closeCheckout()" style="padding:12px 28px;background:linear-gradient(135deg,#00A86B,#00D084);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer">
+            Đóng lại
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <style>
+      @keyframes modal-in { from { opacity:0;transform:scale(0.95) } to { opacity:1;transform:scale(1) } }
+      .dots-anim::after { content:'...'; animation: dots 1.5s infinite; }
+      @keyframes dots { 0%,100%{content:'.'} 33%{content:'..'} 66%{content:'...'} }
+    </style>
+
+    <script>
+    // ═══════════════════════════════════════════════════
+    //  CHECKOUT FLOW
+    // ═══════════════════════════════════════════════════
+    let currentOrderCode = null;
+    let pollInterval = null;
+
+    function openCheckout() {
+        document.getElementById('checkout-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        showStep('form');
+    }
+
+    function closeCheckout() {
+        document.getElementById('checkout-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+        if (pollInterval) clearInterval(pollInterval);
+        // Reset
+        document.getElementById('co-name').value = '';
+        document.getElementById('co-phone').value = '';
+        document.getElementById('co-email').value = '';
+    }
+
+    function showStep(step) {
+        ['form','qr','success'].forEach(s => {
+            document.getElementById('step-'+s).style.display = s === step ? 'block' : 'none';
+        });
+    }
+
+    async function submitCheckout() {
+        const name  = document.getElementById('co-name').value.trim();
+        const phone = document.getElementById('co-phone').value.trim();
+        const email = document.getElementById('co-email').value.trim();
+        const errEl = document.getElementById('co-error');
+        const btn   = document.getElementById('co-submit-btn');
+
+        if (!name || !phone) {
+            errEl.textContent = 'Vui lòng điền đủ Tên và Số điện thoại.';
+            errEl.style.display = 'block';
+            return;
+        }
+        errEl.style.display = 'none';
+        btn.textContent = 'Đang xử lý...';
+        btn.disabled = true;
+
+        try {
+            const res  = await fetch('/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, phone, email })
+            });
+            const data = await res.json();
+
+            if (!data.ok) {
+                errEl.textContent = data.error || 'Có lỗi xảy ra, thử lại nhé!';
+                errEl.style.display = 'block';
+                btn.textContent = 'Tiếp theo — Thanh toán →';
+                btn.disabled = false;
+                return;
+            }
+
+            // Hiển thị QR
+            currentOrderCode = data.order_code;
+            document.getElementById('qr-image').src   = data.qr_url;
+            document.getElementById('qr-bank').textContent    = data.bank_code;
+            document.getElementById('qr-account').textContent = data.account;
+            document.getElementById('qr-content').textContent = data.content;
+            showStep('qr');
+
+            // Bắt đầu polling kiểm tra trạng thái
+            startPolling(data.order_code);
+
+        } catch(e) {
+            errEl.textContent = 'Lỗi kết nối. Thử lại nhé!';
+            errEl.style.display = 'block';
+            btn.textContent = 'Tiếp theo — Thanh toán →';
+            btn.disabled = false;
+        }
+    }
+
+    function startPolling(orderCode) {
+        if (pollInterval) clearInterval(pollInterval);
+        pollInterval = setInterval(async () => {
+            try {
+                const res  = await fetch('/api/order-status/' + orderCode);
+                const data = await res.json();
+                if (data.status === 'paid') {
+                    clearInterval(pollInterval);
+                    showStep('success');
+                }
+            } catch(e) { /* silent fail */ }
+        }, 3000); // Kiểm tra mỗi 3 giây
+    }
+
+    // Đóng khi click ra ngoài
+    document.getElementById('checkout-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeCheckout();
+    });
+    </script>
+
     <!-- CHATBOT WIDGET -->
+
     <div id="chatbot-toggle" class="chatbot-toggle" onclick="toggleChatbot()">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
         <span class="chatbot-badge">1</span>
