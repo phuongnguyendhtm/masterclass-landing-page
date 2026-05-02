@@ -15,43 +15,24 @@ import json
 import hmac
 import hashlib
 from datetime import datetime
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, send_from_directory, redirect, url_for
 import resend
 
+load_dotenv()  # Doc cau hinh tu file .env
+
 app = Flask(__name__, template_folder="templates", static_folder=".")
 
-# ── Cấu hình ──────────────────────────────────────────────────────
-DB_PATH       = os.path.join(os.path.dirname(__file__), "brain.db")
-PRODUCT_PRICE = 499000          # VNĐ — giá ưu đãi sớm
+# ── Cấu hình (đọc từ file .env) ──────────────────────────────────
+DB_PATH              = os.path.join(os.path.dirname(__file__), "brain.db")
+PRODUCT_PRICE        = int(os.environ.get("PRODUCT_PRICE", 499000))
+SEPAY_ACCOUNT_NUMBER = os.environ.get("SEPAY_ACCOUNT_NUMBER", "0030100065507004")
+SEPAY_BANK_CODE      = os.environ.get("SEPAY_BANK_CODE", "OCB")
+SEPAY_WEBHOOK_SECRET = os.environ.get("SEPAY_WEBHOOK_SECRET", "")
 
-# !! Thay bằng thông tin tài khoản Sepay thật của bạn !!
-SEPAY_ACCOUNT_NUMBER = "0030100065507004"   # So tai khoan OCB
-SEPAY_BANK_CODE      = "OCB"                 # Ma ngan hang OCB
-def _load_sepay_secret():
-    config_path = os.path.join(os.path.dirname(__file__), "sepay_config.txt")
-    if os.path.exists(config_path):
-        for line in open(config_path).readlines():
-            if "=" in line and "SEPAY_WEBHOOK_SECRET" in line:
-                return line.strip().split("=", 1)[1].strip()
-    return ""
-
-SEPAY_WEBHOOK_SECRET = _load_sepay_secret()
-
-# ── Cau hinh Resend Email ─────────────────────────────────────────
-def _load_resend_config():
-    cfg = {}
-    config_path = os.path.join(os.path.dirname(__file__), "resend_config.txt")
-    if os.path.exists(config_path):
-        for line in open(config_path).readlines():
-            if "=" in line:
-                k, v = line.strip().split("=", 1)
-                cfg[k.strip()] = v.strip()
-    return cfg
-
-_rcfg = _load_resend_config()
-resend.api_key        = _rcfg.get("RESEND_API_KEY", "")
-RESEND_FROM           = _rcfg.get("RESEND_FROM", "onboarding@resend.dev")
-RESEND_TO_TEST        = _rcfg.get("RESEND_TO_TEST", "")
+resend.api_key       = os.environ.get("RESEND_API_KEY", "")
+RESEND_FROM          = os.environ.get("RESEND_FROM", "onboarding@resend.dev")
+RESEND_TO_TEST       = os.environ.get("RESEND_TO_TEST", "")
 
 
 def send_email(to_email, subject, html_body):
@@ -377,10 +358,11 @@ def order_status(order_code):
 
 # ── Run ───────────────────────────────────────────────────────────
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 3000))
     print("=" * 50)
     print("  [OK] Masterclass Backend Server dang chay")
-    print("  Trang web : http://localhost:5000")
-    print("  Admin     : http://localhost:5000/admin")
+    print(f"  Trang web : http://localhost:{port}")
+    print(f"  Admin     : http://localhost:{port}/admin")
     print("  Nhan Ctrl+C de dung")
     print("=" * 50)
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", debug=False, port=port)
