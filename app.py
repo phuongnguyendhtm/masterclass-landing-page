@@ -27,7 +27,15 @@ PRODUCT_PRICE = 499000          # VNĐ — giá ưu đãi sớm
 # !! Thay bằng thông tin tài khoản Sepay thật của bạn !!
 SEPAY_ACCOUNT_NUMBER = "0030100065507004"   # So tai khoan OCB
 SEPAY_BANK_CODE      = "OCB"                 # Ma ngan hang OCB
-SEPAY_WEBHOOK_SECRET = ""                    # API Secret tu trang Sepay (dien sau)
+def _load_sepay_secret():
+    config_path = os.path.join(os.path.dirname(__file__), "sepay_config.txt")
+    if os.path.exists(config_path):
+        for line in open(config_path).readlines():
+            if "=" in line and "SEPAY_WEBHOOK_SECRET" in line:
+                return line.strip().split("=", 1)[1].strip()
+    return ""
+
+SEPAY_WEBHOOK_SECRET = _load_sepay_secret()
 
 # ── Cau hinh Resend Email ─────────────────────────────────────────
 def _load_resend_config():
@@ -80,6 +88,61 @@ def send_welcome_email(name, email, order_code):
       <p>Neu ban chua chuyen khoan, hay hoan tat thanh toan de chot suat.<br>
       Neu da chuyen roi — toi se lien he ban qua SDT trong vong 24 gio.</p>
       <p>Bat ky cau hoi nao cu reply email nay — toi doc het.</p>
+      <p>Phuong</p>
+    </div>
+    """
+    send_email(email, subject, html)
+
+
+def send_nurture_email(name, email):
+    subject = "Tai sao 90% nguoi lam marketing van ton 3 gio/ngay cho viec co the tu dong hoa"
+    html = f"""
+    <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
+      <h2 style="color:#00A86B">{name} oi,</h2>
+      <p>Hom nay khong ban gi — toi muon chia se voi ban 1 dieu toi quan sat duoc.</p>
+      <p>Phan lon chu doanh nghiep nho va solopreneur dang danh 3-4 gio moi ngay cho nhung viec nay:</p>
+      <ul>
+        <li>Tra loi tin nhan hoi gia</li>
+        <li>Copy thong tin khach vao Excel</li>
+        <li>Kiem tra ngan hang xem tien vao chua</li>
+        <li>Viet caption dang bai mang xa hoi</li>
+        <li>Nhan tin cham soc khach sau mua</li>
+      </ul>
+      <p>Van de khong phai la ho luoi. Ma la ho chua co he thong.</p>
+      <p>Khi toi noi "AI Marketing Tinh Gon" — toi khong co nghia la dung ChatGPT de viet bai cho nhanh hon. Toi noi den viec xay mot he thong ma tung phan trong danh sach tren deu chay tu dong.</p>
+      <p>Chatbot tra loi thay ban.<br>
+      Form tu luu thong tin khach.<br>
+      Ngan hang tu bao ve khi co tien.<br>
+      Email tu cham soc khach theo lich.</p>
+      <p>Ban chi can mo bao cao buoi sang va quyet dinh buoc tiep theo.</p>
+      <p>Day la thu toi se giup ban xay trong 5 tuan.</p>
+      <p>Phuong</p>
+      <p><small>P.S. Neu ban chua giu cho, hom nay van con suat uu dai 499.000d — ngay mai toi chua chac giu duoc muc nay.</small></p>
+    </div>
+    """
+    send_email(email, subject, html)
+
+
+def send_closing_email(name, email):
+    subject = "Con [X] suat — va day la ly do toi khong tang them sau do"
+    html = f"""
+    <div style="font-family:sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a">
+      <h2 style="color:#00A86B">{name} oi,</h2>
+      <p>Toi se noi thang.</p>
+      <p>Masterclass nay gioi han 15 nguoi — khong phai chieu marketing. Ma vi voi moi nguoi, toi can xem that su ho dang van hanh kieu gi, he thong nao phu hop, va di sat trong 5 tuan do.</p>
+      <p>Qua 15 nguoi, toi khong lam duoc chuyen do nua.</p>
+      <p>Muc gia 499.000d la muc danh cho nguoi dang ky som — nhung nguoi tin vao huong di nay truoc khi thay ket qua. Sau khi du 15 suat, toi se dong dang ky.</p>
+      <p>Neu ban dang can nhac, day la nhung gi ban se co sau 5 tuan:</p>
+      <ul>
+        <li>Website + chatbot tu van tu dong</li>
+        <li>He thong nhan thanh toan qua QR (khong can ngoi truc)</li>
+        <li>CRM quan ly khach hang</li>
+        <li>Email marketing tu dong cham soc</li>
+        <li>Bo nao AI biet viet content theo dung giong ban</li>
+      </ul>
+      <p>Tat ca tren may tinh cua ban — khong phu thuoc vao nen tang nao.</p>
+      <p>👉 Giu cho tai: <strong>http://localhost:5000</strong></p>
+      <p>Neu ban co cau hoi gi truoc khi quyet dinh, cu reply email nay.</p>
       <p>Phuong</p>
     </div>
     """
@@ -188,6 +251,11 @@ def checkout():
 
     # Gui email chao mung ngay sau khi tao don
     send_welcome_email(name, email, order_code)
+    
+    # Che do test: Gui luon ca 3 email neu email co chu +test
+    if "+test" in email.lower():
+        send_nurture_email(name, email)
+        send_closing_email(name, email)
 
     return jsonify({
         "ok":           True,
