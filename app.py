@@ -171,6 +171,11 @@ def index():
     """Serve trang landing page chính"""
     return send_from_directory(".", "index.html")
 
+@app.route("/prompt_tong_the")
+def prompt_tong_the():
+    """Serve trang Bộ Prompt Marketing Toàn Diện"""
+    return render_template("prompt_tong_the.html")
+
 @app.route("/<path:filename>")
 def static_files(filename):
     """Serve các file tĩnh (CSS, JS, ảnh)"""
