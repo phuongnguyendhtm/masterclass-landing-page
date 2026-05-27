@@ -171,6 +171,11 @@ def index():
     """Serve trang landing page chính"""
     return send_from_directory(".", "index.html")
 
+@app.route("/quy")
+def redirect_quy():
+    """Trang chuyển hướng tới Google Sheet"""
+    return redirect("https://docs.google.com/spreadsheets/d/1gUM68uULqkKoFHteENUxSyoS4RlzWfZa/edit?usp=sharing&ouid=108341003747248192221&rtpof=true&sd=true")
+
 @app.route("/prompt_tong_the")
 def prompt_tong_the():
     """Serve trang Bộ Prompt Marketing Toàn Diện"""
